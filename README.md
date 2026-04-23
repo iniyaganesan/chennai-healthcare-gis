@@ -20,6 +20,7 @@ geographic data and machine learning.
 
 Open `chennai_healthcare_map.html` in any browser to view the 
 full interactive map.
+🔗 **[View Live Interactive Map](https://iniyaganesan.github.io/chennai-healthcare-gis/chennai_healthcare_map.html)**
 
 **Map features:**
 - 🟢 Government Hospitals
