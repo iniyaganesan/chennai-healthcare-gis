@@ -1,0 +1,2933 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5eeeeb23a79c0b8966a95b17f5b23a82 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index:9999;
+     background-color:white; padding:10px; border-radius:8px;
+     border: 2px solid grey; font-size:13px;">
+<b>Chennai Healthcare Map</b><br>
+<i class="fa fa-map-marker" style="color:green"></i> Government Hospital<br>
+<i class="fa fa-map-marker" style="color:blue"></i> Private Hospital<br>
+<i class="fa fa-map-marker" style="color:orange"></i> ESI Hospital<br>
+⚠️ Underserved Zone (< 6 hospitals)
+</div>
+    
+            <div class="folium-map" id="map_5eeeeb23a79c0b8966a95b17f5b23a82" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5eeeeb23a79c0b8966a95b17f5b23a82 = L.map(
+                "map_5eeeeb23a79c0b8966a95b17f5b23a82",
+                {
+                    center: [13.0827, 80.2707],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_934e7e686a3a97defbf5905dfa8b3ebd = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_934e7e686a3a97defbf5905dfa8b3ebd.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+            var feature_group_47d9a4c10dcf146bfaacb40589765b6f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_9908154db763af125062f39083fd54b1 = L.marker(
+                [13.0827, 80.2707],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_2a52d250a974320f60628940584d120d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ccf754bb5b367685c88166eccd394753 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9de61fa97a313d12f25f2622ac3eb295 = $(`<div id="html_9de61fa97a313d12f25f2622ac3eb295" style="width: 100.0%; height: 100.0%;">     <b>Rajiv Gandhi Government General Hospital</b><br>     Type: Government<br>     Area: Park Town<br>     Beds: 2500<br>     Doctors: 800<br>     Emergency: Yes<br>     Zone: 1     </div>`)[0];
+                popup_ccf754bb5b367685c88166eccd394753.setContent(html_9de61fa97a313d12f25f2622ac3eb295);
+            
+        
+
+        marker_9908154db763af125062f39083fd54b1.bindPopup(popup_ccf754bb5b367685c88166eccd394753)
+        ;
+
+        
+    
+    
+            marker_9908154db763af125062f39083fd54b1.bindTooltip(
+                `<div>
+                     Rajiv Gandhi Government General Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9908154db763af125062f39083fd54b1.setIcon(icon_2a52d250a974320f60628940584d120d);
+            
+    
+            var marker_e878f5d595ae63b65c72b0fee938fe9a = L.marker(
+                [13.1127, 80.2897],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_0d271fc11b21bed3f7fe80cd74b893e1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e03015012c63f14bf4f33c9be977293e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_72368b228f259abd657b83aabdb8ec6d = $(`<div id="html_72368b228f259abd657b83aabdb8ec6d" style="width: 100.0%; height: 100.0%;">     <b>Stanley Medical College Hospital</b><br>     Type: Government<br>     Area: Stanley<br>     Beds: 1531<br>     Doctors: 600<br>     Emergency: Yes<br>     Zone: 5     </div>`)[0];
+                popup_e03015012c63f14bf4f33c9be977293e.setContent(html_72368b228f259abd657b83aabdb8ec6d);
+            
+        
+
+        marker_e878f5d595ae63b65c72b0fee938fe9a.bindPopup(popup_e03015012c63f14bf4f33c9be977293e)
+        ;
+
+        
+    
+    
+            marker_e878f5d595ae63b65c72b0fee938fe9a.bindTooltip(
+                `<div>
+                     Stanley Medical College Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e878f5d595ae63b65c72b0fee938fe9a.setIcon(icon_0d271fc11b21bed3f7fe80cd74b893e1);
+            
+    
+            var marker_68409842f711a56a129cc5d0654d7e35 = L.marker(
+                [13.09, 80.251],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_75223e6c6834302391c7fd7ac80ca2b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca0019e2f3d17c113e332cd2777b2b36 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5f4bd424a1117a3b6f57a2e7ef963001 = $(`<div id="html_5f4bd424a1117a3b6f57a2e7ef963001" style="width: 100.0%; height: 100.0%;">     <b>Kilpauk Medical College Hospital</b><br>     Type: Government<br>     Area: Kilpauk<br>     Beds: 1172<br>     Doctors: 450<br>     Emergency: Yes<br>     Zone: 4     </div>`)[0];
+                popup_ca0019e2f3d17c113e332cd2777b2b36.setContent(html_5f4bd424a1117a3b6f57a2e7ef963001);
+            
+        
+
+        marker_68409842f711a56a129cc5d0654d7e35.bindPopup(popup_ca0019e2f3d17c113e332cd2777b2b36)
+        ;
+
+        
+    
+    
+            marker_68409842f711a56a129cc5d0654d7e35.bindTooltip(
+                `<div>
+                     Kilpauk Medical College Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_68409842f711a56a129cc5d0654d7e35.setIcon(icon_75223e6c6834302391c7fd7ac80ca2b5);
+            
+    
+            var marker_e8c3554ad0840c242db301312be905e9 = L.marker(
+                [13.0732, 80.2609],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_91c79d470503a91670cfb0d1368496e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a61ceb1d570ff66c6dfd98d16f6538b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2fe8cdb281764aa7ee2925767f1cb14e = $(`<div id="html_2fe8cdb281764aa7ee2925767f1cb14e" style="width: 100.0%; height: 100.0%;">     <b>Institute of Child Health</b><br>     Type: Government<br>     Area: Egmore<br>     Beds: 550<br>     Doctors: 200<br>     Emergency: Yes<br>     Zone: 1     </div>`)[0];
+                popup_5a61ceb1d570ff66c6dfd98d16f6538b.setContent(html_2fe8cdb281764aa7ee2925767f1cb14e);
+            
+        
+
+        marker_e8c3554ad0840c242db301312be905e9.bindPopup(popup_5a61ceb1d570ff66c6dfd98d16f6538b)
+        ;
+
+        
+    
+    
+            marker_e8c3554ad0840c242db301312be905e9.bindTooltip(
+                `<div>
+                     Institute of Child Health
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e8c3554ad0840c242db301312be905e9.setIcon(icon_91c79d470503a91670cfb0d1368496e6);
+            
+    
+            var marker_4cb0430780d11acc16daf3812aaaca14 = L.marker(
+                [13.0521, 80.266],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_844968b30dba43c499e6d7d839a4185e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2668e555817ec6077400816fbe384690 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_610b01681fea5fd829cdb51aaf9694fd = $(`<div id="html_610b01681fea5fd829cdb51aaf9694fd" style="width: 100.0%; height: 100.0%;">     <b>Government Royapettah Hospital</b><br>     Type: Government<br>     Area: Royapettah<br>     Beds: 500<br>     Doctors: 180<br>     Emergency: Yes<br>     Zone: 1     </div>`)[0];
+                popup_2668e555817ec6077400816fbe384690.setContent(html_610b01681fea5fd829cdb51aaf9694fd);
+            
+        
+
+        marker_4cb0430780d11acc16daf3812aaaca14.bindPopup(popup_2668e555817ec6077400816fbe384690)
+        ;
+
+        
+    
+    
+            marker_4cb0430780d11acc16daf3812aaaca14.bindTooltip(
+                `<div>
+                     Government Royapettah Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4cb0430780d11acc16daf3812aaaca14.setIcon(icon_844968b30dba43c499e6d7d839a4185e);
+            
+    
+            var marker_b6c9b37803e2b0e0ce036482a7a1a9c3 = L.marker(
+                [12.9249, 80.1],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_7b05a7e64db8d0374da2fe565dc49588 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a94ec3d99ea3b9a5b5e72c7e5c33306 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_cb10fe34cd715e6270557daa33d9ddf0 = $(`<div id="html_cb10fe34cd715e6270557daa33d9ddf0" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Tambaram</b><br>     Type: Government<br>     Area: Tambaram<br>     Beds: 400<br>     Doctors: 150<br>     Emergency: Yes<br>     Zone: 0     </div>`)[0];
+                popup_9a94ec3d99ea3b9a5b5e72c7e5c33306.setContent(html_cb10fe34cd715e6270557daa33d9ddf0);
+            
+        
+
+        marker_b6c9b37803e2b0e0ce036482a7a1a9c3.bindPopup(popup_9a94ec3d99ea3b9a5b5e72c7e5c33306)
+        ;
+
+        
+    
+    
+            marker_b6c9b37803e2b0e0ce036482a7a1a9c3.bindTooltip(
+                `<div>
+                     Government Hospital Tambaram
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b6c9b37803e2b0e0ce036482a7a1a9c3.setIcon(icon_7b05a7e64db8d0374da2fe565dc49588);
+            
+    
+            var marker_9fd5eef7834598e15340aa52bd44e420 = L.marker(
+                [12.9516, 80.1418],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_3748df7eba091670834d7738b08995ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4d4df41eed80b71f5485de2f7b03a7ff = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_62d0d2a2604c011259af36da8008950a = $(`<div id="html_62d0d2a2604c011259af36da8008950a" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Chromepet</b><br>     Type: Government<br>     Area: Chromepet<br>     Beds: 200<br>     Doctors: 80<br>     Emergency: No<br>     Zone: 0     </div>`)[0];
+                popup_4d4df41eed80b71f5485de2f7b03a7ff.setContent(html_62d0d2a2604c011259af36da8008950a);
+            
+        
+
+        marker_9fd5eef7834598e15340aa52bd44e420.bindPopup(popup_4d4df41eed80b71f5485de2f7b03a7ff)
+        ;
+
+        
+    
+    
+            marker_9fd5eef7834598e15340aa52bd44e420.bindTooltip(
+                `<div>
+                     Government Hospital Chromepet
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9fd5eef7834598e15340aa52bd44e420.setIcon(icon_3748df7eba091670834d7738b08995ef);
+            
+    
+            var marker_49b6e22e8153bbb0db63a6f3aa62d2db = L.marker(
+                [13.1143, 80.1548],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_73acdecd0d4d587b8bc53f891d8a701c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9be317c76784fb83a67423e9652dcaa7 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2969393e454c76eeb40038adab84075a = $(`<div id="html_2969393e454c76eeb40038adab84075a" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Ambattur</b><br>     Type: Government<br>     Area: Ambattur<br>     Beds: 250<br>     Doctors: 90<br>     Emergency: No<br>     Zone: 4     </div>`)[0];
+                popup_9be317c76784fb83a67423e9652dcaa7.setContent(html_2969393e454c76eeb40038adab84075a);
+            
+        
+
+        marker_49b6e22e8153bbb0db63a6f3aa62d2db.bindPopup(popup_9be317c76784fb83a67423e9652dcaa7)
+        ;
+
+        
+    
+    
+            marker_49b6e22e8153bbb0db63a6f3aa62d2db.bindTooltip(
+                `<div>
+                     Government Hospital Ambattur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_49b6e22e8153bbb0db63a6f3aa62d2db.setIcon(icon_73acdecd0d4d587b8bc53f891d8a701c);
+            
+    
+            var marker_01c1e26c94016ada4de90bf5bf29f99f = L.marker(
+                [13.1628, 80.304],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_b732b618f154656acbf14974148a67c2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54d5f6e3e4f4557fdf5a59e008fcc216 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_ab0bdb99dda20e75f4a49ee9107d7ac0 = $(`<div id="html_ab0bdb99dda20e75f4a49ee9107d7ac0" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Tiruvottiyur</b><br>     Type: Government<br>     Area: Tiruvottiyur<br>     Beds: 200<br>     Doctors: 75<br>     Emergency: No<br>     Zone: 5     </div>`)[0];
+                popup_54d5f6e3e4f4557fdf5a59e008fcc216.setContent(html_ab0bdb99dda20e75f4a49ee9107d7ac0);
+            
+        
+
+        marker_01c1e26c94016ada4de90bf5bf29f99f.bindPopup(popup_54d5f6e3e4f4557fdf5a59e008fcc216)
+        ;
+
+        
+    
+    
+            marker_01c1e26c94016ada4de90bf5bf29f99f.bindTooltip(
+                `<div>
+                     Government Hospital Tiruvottiyur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_01c1e26c94016ada4de90bf5bf29f99f.setIcon(icon_b732b618f154656acbf14974148a67c2);
+            
+    
+            var marker_9df55ca0972b57dcbf7e5688a5554dad = L.marker(
+                [12.901, 80.2279],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_6774cf7582d673f9c2887308835b1a80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_73213a1cccb890dd12d7bd64d78114e6 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2853ce8f6096a8c75cabec4f74e87664 = $(`<div id="html_2853ce8f6096a8c75cabec4f74e87664" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Sholinganallur</b><br>     Type: Government<br>     Area: Sholinganallur<br>     Beds: 150<br>     Doctors: 60<br>     Emergency: No<br>     Zone: 3     </div>`)[0];
+                popup_73213a1cccb890dd12d7bd64d78114e6.setContent(html_2853ce8f6096a8c75cabec4f74e87664);
+            
+        
+
+        marker_9df55ca0972b57dcbf7e5688a5554dad.bindPopup(popup_73213a1cccb890dd12d7bd64d78114e6)
+        ;
+
+        
+    
+    
+            marker_9df55ca0972b57dcbf7e5688a5554dad.bindTooltip(
+                `<div>
+                     Government Hospital Sholinganallur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9df55ca0972b57dcbf7e5688a5554dad.setIcon(icon_6774cf7582d673f9c2887308835b1a80);
+            
+    
+            var marker_b6f6036bb2d9a8e345fb0a7a939fbd57 = L.marker(
+                [13.0878, 80.2101],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_afcbc4557373aad09b21bfe204b5b84a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_69b24866d06dee3df111571df3e238b2 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_25926130c03b43701258c9fef034e546 = $(`<div id="html_25926130c03b43701258c9fef034e546" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Anna Nagar</b><br>     Type: Government<br>     Area: Anna Nagar<br>     Beds: 300<br>     Doctors: 110<br>     Emergency: Yes<br>     Zone: 4     </div>`)[0];
+                popup_69b24866d06dee3df111571df3e238b2.setContent(html_25926130c03b43701258c9fef034e546);
+            
+        
+
+        marker_b6f6036bb2d9a8e345fb0a7a939fbd57.bindPopup(popup_69b24866d06dee3df111571df3e238b2)
+        ;
+
+        
+    
+    
+            marker_b6f6036bb2d9a8e345fb0a7a939fbd57.bindTooltip(
+                `<div>
+                     Government Hospital Anna Nagar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b6f6036bb2d9a8e345fb0a7a939fbd57.setIcon(icon_afcbc4557373aad09b21bfe204b5b84a);
+            
+    
+            var marker_ee82bdedad420f23231d2915f96ca395 = L.marker(
+                [13.12, 80.295],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_ef29a91f8f6b319910e049a935fa62d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_734b0391f11733c40eae795a5813bdd1 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3db147472401ab460c5eb29ae0c9683b = $(`<div id="html_3db147472401ab460c5eb29ae0c9683b" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Tondiarpet</b><br>     Type: Government<br>     Area: Tondiarpet<br>     Beds: 180<br>     Doctors: 70<br>     Emergency: No<br>     Zone: 5     </div>`)[0];
+                popup_734b0391f11733c40eae795a5813bdd1.setContent(html_3db147472401ab460c5eb29ae0c9683b);
+            
+        
+
+        marker_ee82bdedad420f23231d2915f96ca395.bindPopup(popup_734b0391f11733c40eae795a5813bdd1)
+        ;
+
+        
+    
+    
+            marker_ee82bdedad420f23231d2915f96ca395.bindTooltip(
+                `<div>
+                     Government Hospital Tondiarpet
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ee82bdedad420f23231d2915f96ca395.setIcon(icon_ef29a91f8f6b319910e049a935fa62d8);
+            
+    
+            var marker_f845d68aece66d6277a3dd91a4cefa5e = L.marker(
+                [13.1483, 80.231],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_c456f2ef139bec8693ad5b868c0322bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9b508b55e86f92eb8af0d4b17de1b5dc = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4d39a3abaf4994bf85eb78a35d81f434 = $(`<div id="html_4d39a3abaf4994bf85eb78a35d81f434" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Madhavaram</b><br>     Type: Government<br>     Area: Madhavaram<br>     Beds: 150<br>     Doctors: 55<br>     Emergency: No<br>     Zone: 4     </div>`)[0];
+                popup_9b508b55e86f92eb8af0d4b17de1b5dc.setContent(html_4d39a3abaf4994bf85eb78a35d81f434);
+            
+        
+
+        marker_f845d68aece66d6277a3dd91a4cefa5e.bindPopup(popup_9b508b55e86f92eb8af0d4b17de1b5dc)
+        ;
+
+        
+    
+    
+            marker_f845d68aece66d6277a3dd91a4cefa5e.bindTooltip(
+                `<div>
+                     Government Hospital Madhavaram
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f845d68aece66d6277a3dd91a4cefa5e.setIcon(icon_c456f2ef139bec8693ad5b868c0322bc);
+            
+    
+            var marker_a6366b0673f2982b99bf95533d719845 = L.marker(
+                [13.1671, 80.263],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_dbfcf2afbad9b6c60984df85fc0ee87a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_727b4ca23f93ef1cd8ecb123af9ad5bc = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9e5219407b714810e75377254d6ab95d = $(`<div id="html_9e5219407b714810e75377254d6ab95d" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Manali</b><br>     Type: Government<br>     Area: Manali<br>     Beds: 120<br>     Doctors: 45<br>     Emergency: No<br>     Zone: 5     </div>`)[0];
+                popup_727b4ca23f93ef1cd8ecb123af9ad5bc.setContent(html_9e5219407b714810e75377254d6ab95d);
+            
+        
+
+        marker_a6366b0673f2982b99bf95533d719845.bindPopup(popup_727b4ca23f93ef1cd8ecb123af9ad5bc)
+        ;
+
+        
+    
+    
+            marker_a6366b0673f2982b99bf95533d719845.bindTooltip(
+                `<div>
+                     Government Hospital Manali
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a6366b0673f2982b99bf95533d719845.setIcon(icon_dbfcf2afbad9b6c60984df85fc0ee87a);
+            
+    
+            var marker_11f22d769f52ead1aa2667b913275c94 = L.marker(
+                [13.0465, 80.1165],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_fa9ae0ca952d74d8584780b44295c798 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8080dc704bfb519d12ec444427363c7b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_27cfef7d9da6554ddd149b79a6e74c86 = $(`<div id="html_27cfef7d9da6554ddd149b79a6e74c86" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Poonamallee</b><br>     Type: Government<br>     Area: Poonamallee<br>     Beds: 200<br>     Doctors: 75<br>     Emergency: No<br>     Zone: 2     </div>`)[0];
+                popup_8080dc704bfb519d12ec444427363c7b.setContent(html_27cfef7d9da6554ddd149b79a6e74c86);
+            
+        
+
+        marker_11f22d769f52ead1aa2667b913275c94.bindPopup(popup_8080dc704bfb519d12ec444427363c7b)
+        ;
+
+        
+    
+    
+            marker_11f22d769f52ead1aa2667b913275c94.bindTooltip(
+                `<div>
+                     Government Hospital Poonamallee
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_11f22d769f52ead1aa2667b913275c94.setIcon(icon_fa9ae0ca952d74d8584780b44295c798);
+            
+    
+            var marker_0d0f6fa04897c79be84595d49c758417 = L.marker(
+                [12.9675, 80.1493],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_aa450fef6f341189276190b5deb65773 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54c6cb47af0793062761a08d8ca48324 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_15711b8b7343debced42092258114d7a = $(`<div id="html_15711b8b7343debced42092258114d7a" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Pallavaram</b><br>     Type: Government<br>     Area: Pallavaram<br>     Beds: 180<br>     Doctors: 65<br>     Emergency: No<br>     Zone: 0     </div>`)[0];
+                popup_54c6cb47af0793062761a08d8ca48324.setContent(html_15711b8b7343debced42092258114d7a);
+            
+        
+
+        marker_0d0f6fa04897c79be84595d49c758417.bindPopup(popup_54c6cb47af0793062761a08d8ca48324)
+        ;
+
+        
+    
+    
+            marker_0d0f6fa04897c79be84595d49c758417.bindTooltip(
+                `<div>
+                     Government Hospital Pallavaram
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0d0f6fa04897c79be84595d49c758417.setIcon(icon_aa450fef6f341189276190b5deb65773);
+            
+    
+            var marker_84628a8bfced30015bdb893ab5569120 = L.marker(
+                [13.0067, 80.2206],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_f6923c8bab6e3fb5050c95a2e0e5f213 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9b1ed293ffcae1d2e1bbe0c62b8c52dd = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_43db08351b7d81de76c7205e6fb43c54 = $(`<div id="html_43db08351b7d81de76c7205e6fb43c54" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Guindy</b><br>     Type: Government<br>     Area: Guindy<br>     Beds: 350<br>     Doctors: 130<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_9b1ed293ffcae1d2e1bbe0c62b8c52dd.setContent(html_43db08351b7d81de76c7205e6fb43c54);
+            
+        
+
+        marker_84628a8bfced30015bdb893ab5569120.bindPopup(popup_9b1ed293ffcae1d2e1bbe0c62b8c52dd)
+        ;
+
+        
+    
+    
+            marker_84628a8bfced30015bdb893ab5569120.bindTooltip(
+                `<div>
+                     Government Hospital Guindy
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_84628a8bfced30015bdb893ab5569120.setIcon(icon_f6923c8bab6e3fb5050c95a2e0e5f213);
+            
+    
+            var marker_76493a165b06ae60620a86bcb29b1e66 = L.marker(
+                [12.9815, 80.2209],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_b417066c86def34d5f3d7064e8dc014a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5e1c05159c4798e172bd1bb55d478e74 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7e8956a8e51fbfd5e4a426e6988253ab = $(`<div id="html_7e8956a8e51fbfd5e4a426e6988253ab" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Velachery</b><br>     Type: Government<br>     Area: Velachery<br>     Beds: 200<br>     Doctors: 80<br>     Emergency: No<br>     Zone: 3     </div>`)[0];
+                popup_5e1c05159c4798e172bd1bb55d478e74.setContent(html_7e8956a8e51fbfd5e4a426e6988253ab);
+            
+        
+
+        marker_76493a165b06ae60620a86bcb29b1e66.bindPopup(popup_5e1c05159c4798e172bd1bb55d478e74)
+        ;
+
+        
+    
+    
+            marker_76493a165b06ae60620a86bcb29b1e66.bindTooltip(
+                `<div>
+                     Government Hospital Velachery
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_76493a165b06ae60620a86bcb29b1e66.setIcon(icon_b417066c86def34d5f3d7064e8dc014a);
+            
+    
+            var marker_8c6a113a6dea954a89a8be12d7360d4f = L.marker(
+                [13.0012, 80.2565],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_4b73ab52b445b3af66ad795e09ff4607 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_112a75d29a389739cb98b4a35f289b16 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e85c013d56dbc195dae2d4fa5cdd0491 = $(`<div id="html_e85c013d56dbc195dae2d4fa5cdd0491" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Adyar</b><br>     Type: Government<br>     Area: Adyar<br>     Beds: 180<br>     Doctors: 70<br>     Emergency: No<br>     Zone: 1     </div>`)[0];
+                popup_112a75d29a389739cb98b4a35f289b16.setContent(html_e85c013d56dbc195dae2d4fa5cdd0491);
+            
+        
+
+        marker_8c6a113a6dea954a89a8be12d7360d4f.bindPopup(popup_112a75d29a389739cb98b4a35f289b16)
+        ;
+
+        
+    
+    
+            marker_8c6a113a6dea954a89a8be12d7360d4f.bindTooltip(
+                `<div>
+                     Government Hospital Adyar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c6a113a6dea954a89a8be12d7360d4f.setIcon(icon_4b73ab52b445b3af66ad795e09ff4607);
+            
+    
+            var marker_85369d42144481bd8a2c61d68d63dd96 = L.marker(
+                [13.0395, 80.268],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_f12743b749f85e15169b5fb5b52e3c73 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af5ea8f830abca51fcad8fb446123eaf = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_84068a5363500ea331fe1404de999da8 = $(`<div id="html_84068a5363500ea331fe1404de999da8" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Mylapore</b><br>     Type: Government<br>     Area: Mylapore<br>     Beds: 220<br>     Doctors: 85<br>     Emergency: No<br>     Zone: 1     </div>`)[0];
+                popup_af5ea8f830abca51fcad8fb446123eaf.setContent(html_84068a5363500ea331fe1404de999da8);
+            
+        
+
+        marker_85369d42144481bd8a2c61d68d63dd96.bindPopup(popup_af5ea8f830abca51fcad8fb446123eaf)
+        ;
+
+        
+    
+    
+            marker_85369d42144481bd8a2c61d68d63dd96.bindTooltip(
+                `<div>
+                     Government Hospital Mylapore
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_85369d42144481bd8a2c61d68d63dd96.setIcon(icon_f12743b749f85e15169b5fb5b52e3c73);
+            
+    
+            var marker_077acf4e6fae9bde03ec364f55a8bfe1 = L.marker(
+                [13.0569, 80.2412],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_90287f1d0b6fff7a1120e8661cfe67da = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_392d4aa057c4e48de365df16e4971301 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c81d26aa0efaf4fea1eb4ee933157959 = $(`<div id="html_c81d26aa0efaf4fea1eb4ee933157959" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Nungambakkam</b><br>     Type: Government<br>     Area: Nungambakkam<br>     Beds: 190<br>     Doctors: 75<br>     Emergency: No<br>     Zone: 1     </div>`)[0];
+                popup_392d4aa057c4e48de365df16e4971301.setContent(html_c81d26aa0efaf4fea1eb4ee933157959);
+            
+        
+
+        marker_077acf4e6fae9bde03ec364f55a8bfe1.bindPopup(popup_392d4aa057c4e48de365df16e4971301)
+        ;
+
+        
+    
+    
+            marker_077acf4e6fae9bde03ec364f55a8bfe1.bindTooltip(
+                `<div>
+                     Government Hospital Nungambakkam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_077acf4e6fae9bde03ec364f55a8bfe1.setIcon(icon_90287f1d0b6fff7a1120e8661cfe67da);
+            
+    
+            var marker_d7441614349cd01377760a6c64b56a18 = L.marker(
+                [12.961, 80.244],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_90a945c2a385a234e67bcab09db9388c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f106094c265c581aeacb9fabf91b135d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7aa175dfff1fc112459ff99538dc7105 = $(`<div id="html_7aa175dfff1fc112459ff99538dc7105" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Perungudi</b><br>     Type: Government<br>     Area: Perungudi<br>     Beds: 160<br>     Doctors: 60<br>     Emergency: No<br>     Zone: 3     </div>`)[0];
+                popup_f106094c265c581aeacb9fabf91b135d.setContent(html_7aa175dfff1fc112459ff99538dc7105);
+            
+        
+
+        marker_d7441614349cd01377760a6c64b56a18.bindPopup(popup_f106094c265c581aeacb9fabf91b135d)
+        ;
+
+        
+    
+    
+            marker_d7441614349cd01377760a6c64b56a18.bindTooltip(
+                `<div>
+                     Government Hospital Perungudi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d7441614349cd01377760a6c64b56a18.setIcon(icon_90a945c2a385a234e67bcab09db9388c);
+            
+    
+            var marker_d0447be72344ad903627d5c190a8c91a = L.marker(
+                [13.1214, 80.2214],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_9ac602b816d1115ab90f1f4c7fbc1bf6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4bf3481a04966e9cd1aadca764492878 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_831314ff929c991648cf2425eca29d41 = $(`<div id="html_831314ff929c991648cf2425eca29d41" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Kolathur</b><br>     Type: Government<br>     Area: Kolathur<br>     Beds: 170<br>     Doctors: 65<br>     Emergency: No<br>     Zone: 4     </div>`)[0];
+                popup_4bf3481a04966e9cd1aadca764492878.setContent(html_831314ff929c991648cf2425eca29d41);
+            
+        
+
+        marker_d0447be72344ad903627d5c190a8c91a.bindPopup(popup_4bf3481a04966e9cd1aadca764492878)
+        ;
+
+        
+    
+    
+            marker_d0447be72344ad903627d5c190a8c91a.bindTooltip(
+                `<div>
+                     Government Hospital Kolathur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0447be72344ad903627d5c190a8c91a.setIcon(icon_9ac602b816d1115ab90f1f4c7fbc1bf6);
+            
+    
+            var marker_a61ef1442943be882d5ca664eec851b1 = L.marker(
+                [13.1028, 80.214],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_f17b5166452c0e634c06c6fc4021db9e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1b084217cb0684ffaef32c8a2833c45a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_818c2b0a82605569bb81b6c4dba2433a = $(`<div id="html_818c2b0a82605569bb81b6c4dba2433a" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Villivakkam</b><br>     Type: Government<br>     Area: Villivakkam<br>     Beds: 160<br>     Doctors: 62<br>     Emergency: No<br>     Zone: 4     </div>`)[0];
+                popup_1b084217cb0684ffaef32c8a2833c45a.setContent(html_818c2b0a82605569bb81b6c4dba2433a);
+            
+        
+
+        marker_a61ef1442943be882d5ca664eec851b1.bindPopup(popup_1b084217cb0684ffaef32c8a2833c45a)
+        ;
+
+        
+    
+    
+            marker_a61ef1442943be882d5ca664eec851b1.bindTooltip(
+                `<div>
+                     Government Hospital Villivakkam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a61ef1442943be882d5ca664eec851b1.setIcon(icon_f17b5166452c0e634c06c6fc4021db9e);
+            
+    
+            var marker_eb6605d96c50eeefc8bc62a286a1954e = L.marker(
+                [13.0678, 80.189],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_a2876bef7514babb7931db38a8ca0ced = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f5d7ca34aa0d56da4977b608777b626d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b9ed1454057c348ae002a26d8477c731 = $(`<div id="html_b9ed1454057c348ae002a26d8477c731" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Nerkundram</b><br>     Type: Government<br>     Area: Nerkundram<br>     Beds: 140<br>     Doctors: 55<br>     Emergency: No<br>     Zone: 2     </div>`)[0];
+                popup_f5d7ca34aa0d56da4977b608777b626d.setContent(html_b9ed1454057c348ae002a26d8477c731);
+            
+        
+
+        marker_eb6605d96c50eeefc8bc62a286a1954e.bindPopup(popup_f5d7ca34aa0d56da4977b608777b626d)
+        ;
+
+        
+    
+    
+            marker_eb6605d96c50eeefc8bc62a286a1954e.bindTooltip(
+                `<div>
+                     Government Hospital Nerkundram
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eb6605d96c50eeefc8bc62a286a1954e.setIcon(icon_a2876bef7514babb7931db38a8ca0ced);
+            
+    
+            var marker_31cb4407fd88b012fa9e590a8218a0c4 = L.marker(
+                [13.0198, 80.1698],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_14a920a60d791873ea7eb46e89c7c8a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_126dfbf68b82106f6e40ea80f0acdc2d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5405969709b99355a3143c2ef4a710b7 = $(`<div id="html_5405969709b99355a3143c2ef4a710b7" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Mugalivakkam</b><br>     Type: Government<br>     Area: Mugalivakkam<br>     Beds: 130<br>     Doctors: 50<br>     Emergency: No<br>     Zone: 2     </div>`)[0];
+                popup_126dfbf68b82106f6e40ea80f0acdc2d.setContent(html_5405969709b99355a3143c2ef4a710b7);
+            
+        
+
+        marker_31cb4407fd88b012fa9e590a8218a0c4.bindPopup(popup_126dfbf68b82106f6e40ea80f0acdc2d)
+        ;
+
+        
+    
+    
+            marker_31cb4407fd88b012fa9e590a8218a0c4.bindTooltip(
+                `<div>
+                     Government Hospital Mugalivakkam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_31cb4407fd88b012fa9e590a8218a0c4.setIcon(icon_14a920a60d791873ea7eb46e89c7c8a6);
+            
+    
+            var marker_4a16f43eb1c8b1fe5ed9a87dbf0de7e8 = L.marker(
+                [12.9987, 80.1548],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_c88db3cdbc5c14c640db4ebf3e60564d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_22f5d4f521145c24ef93437ce3460200 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3752549b7ed5f5dfa50a3ebcfd265a0b = $(`<div id="html_3752549b7ed5f5dfa50a3ebcfd265a0b" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Gerugambakkam</b><br>     Type: Government<br>     Area: Gerugambakkam<br>     Beds: 120<br>     Doctors: 45<br>     Emergency: No<br>     Zone: 2     </div>`)[0];
+                popup_22f5d4f521145c24ef93437ce3460200.setContent(html_3752549b7ed5f5dfa50a3ebcfd265a0b);
+            
+        
+
+        marker_4a16f43eb1c8b1fe5ed9a87dbf0de7e8.bindPopup(popup_22f5d4f521145c24ef93437ce3460200)
+        ;
+
+        
+    
+    
+            marker_4a16f43eb1c8b1fe5ed9a87dbf0de7e8.bindTooltip(
+                `<div>
+                     Government Hospital Gerugambakkam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4a16f43eb1c8b1fe5ed9a87dbf0de7e8.setIcon(icon_c88db3cdbc5c14c640db4ebf3e60564d);
+            
+    
+            var marker_fc6b0353714eaf364dcb45263df17ab3 = L.marker(
+                [12.9198, 80.201],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_f6cf222329196b7a499f9d218c9d2f8e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_730fecec97d286eb255d384f15427b85 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b681a5d31a6f50ab26214c8d1f129c7b = $(`<div id="html_b681a5d31a6f50ab26214c8d1f129c7b" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Medavakkam</b><br>     Type: Government<br>     Area: Medavakkam<br>     Beds: 150<br>     Doctors: 58<br>     Emergency: No<br>     Zone: 3     </div>`)[0];
+                popup_730fecec97d286eb255d384f15427b85.setContent(html_b681a5d31a6f50ab26214c8d1f129c7b);
+            
+        
+
+        marker_fc6b0353714eaf364dcb45263df17ab3.bindPopup(popup_730fecec97d286eb255d384f15427b85)
+        ;
+
+        
+    
+    
+            marker_fc6b0353714eaf364dcb45263df17ab3.bindTooltip(
+                `<div>
+                     Government Hospital Medavakkam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc6b0353714eaf364dcb45263df17ab3.setIcon(icon_f6cf222329196b7a499f9d218c9d2f8e);
+            
+    
+            var marker_f5022f108409f396a1d852e0dc98b156 = L.marker(
+                [12.9098, 80.1498],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_2edf67e0b99863b84fe76019cc300d62 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3c6b4120f95a9dd62587815792cdd9ce = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_bda294d010a219e7a8d57cc6ae1f4846 = $(`<div id="html_bda294d010a219e7a8d57cc6ae1f4846" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Selaiyur</b><br>     Type: Government<br>     Area: Selaiyur<br>     Beds: 130<br>     Doctors: 50<br>     Emergency: No<br>     Zone: 0     </div>`)[0];
+                popup_3c6b4120f95a9dd62587815792cdd9ce.setContent(html_bda294d010a219e7a8d57cc6ae1f4846);
+            
+        
+
+        marker_f5022f108409f396a1d852e0dc98b156.bindPopup(popup_3c6b4120f95a9dd62587815792cdd9ce)
+        ;
+
+        
+    
+    
+            marker_f5022f108409f396a1d852e0dc98b156.bindTooltip(
+                `<div>
+                     Government Hospital Selaiyur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f5022f108409f396a1d852e0dc98b156.setIcon(icon_2edf67e0b99863b84fe76019cc300d62);
+            
+    
+            var marker_a7bb490ad674162ebfeb02af75e7cfc8 = L.marker(
+                [12.9198, 80.1598],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_bb454824de9b533f2c0c2e7ddd47a818 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_659797269fd14b1d4a5691cdb93d10b0 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7ea6aeb111aa3a15e5a922832625dfb6 = $(`<div id="html_7ea6aeb111aa3a15e5a922832625dfb6" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Hasthinapuram</b><br>     Type: Government<br>     Area: Hasthinapuram<br>     Beds: 140<br>     Doctors: 54<br>     Emergency: No<br>     Zone: 0     </div>`)[0];
+                popup_659797269fd14b1d4a5691cdb93d10b0.setContent(html_7ea6aeb111aa3a15e5a922832625dfb6);
+            
+        
+
+        marker_a7bb490ad674162ebfeb02af75e7cfc8.bindPopup(popup_659797269fd14b1d4a5691cdb93d10b0)
+        ;
+
+        
+    
+    
+            marker_a7bb490ad674162ebfeb02af75e7cfc8.bindTooltip(
+                `<div>
+                     Government Hospital Hasthinapuram
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a7bb490ad674162ebfeb02af75e7cfc8.setIcon(icon_bb454824de9b533f2c0c2e7ddd47a818);
+            
+    
+            var marker_9676bdb1a436d8c9ca2db4e332b9a761 = L.marker(
+                [12.9698, 80.1798],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_9bc43185c9e143001961aa0fd19dc18b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a8d637bc207ff2a405426f2a515179fa = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_79346ed1e45529fe1b12d568b3b52a93 = $(`<div id="html_79346ed1e45529fe1b12d568b3b52a93" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Nanmangalam</b><br>     Type: Government<br>     Area: Nanmangalam<br>     Beds: 120<br>     Doctors: 46<br>     Emergency: No<br>     Zone: 3     </div>`)[0];
+                popup_a8d637bc207ff2a405426f2a515179fa.setContent(html_79346ed1e45529fe1b12d568b3b52a93);
+            
+        
+
+        marker_9676bdb1a436d8c9ca2db4e332b9a761.bindPopup(popup_a8d637bc207ff2a405426f2a515179fa)
+        ;
+
+        
+    
+    
+            marker_9676bdb1a436d8c9ca2db4e332b9a761.bindTooltip(
+                `<div>
+                     Government Hospital Nanmangalam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9676bdb1a436d8c9ca2db4e332b9a761.setIcon(icon_9bc43185c9e143001961aa0fd19dc18b);
+            
+    
+            var marker_dc5e5163007543b3df5e72cae1d3f03a = L.marker(
+                [12.9398, 80.1998],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_7b2961445214fab0e77b2dcb99ac0aa0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ff336fd9b7e1e8cdd8d48425671a3bd = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_922a4c841940e9fa62e1728cceb65586 = $(`<div id="html_922a4c841940e9fa62e1728cceb65586" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Kovilambakkam</b><br>     Type: Government<br>     Area: Kovilambakkam<br>     Beds: 130<br>     Doctors: 50<br>     Emergency: No<br>     Zone: 3     </div>`)[0];
+                popup_5ff336fd9b7e1e8cdd8d48425671a3bd.setContent(html_922a4c841940e9fa62e1728cceb65586);
+            
+        
+
+        marker_dc5e5163007543b3df5e72cae1d3f03a.bindPopup(popup_5ff336fd9b7e1e8cdd8d48425671a3bd)
+        ;
+
+        
+    
+    
+            marker_dc5e5163007543b3df5e72cae1d3f03a.bindTooltip(
+                `<div>
+                     Government Hospital Kovilambakkam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dc5e5163007543b3df5e72cae1d3f03a.setIcon(icon_7b2961445214fab0e77b2dcb99ac0aa0);
+            
+    
+            var marker_9930762593f0d6d63e0d9906712068c4 = L.marker(
+                [13.1214, 80.2214],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_31288d4cfc8cd3cb3c1a31b063104626 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff9e254bec73475d5cc0cd7990c1c80b = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7539b797a7895ec061a9511accfee4cd = $(`<div id="html_7539b797a7895ec061a9511accfee4cd" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Kolathur</b><br>     Type: Government<br>     Area: Kolathur<br>     Beds: 170<br>     Doctors: 65<br>     Emergency: No<br>     Zone: 4     </div>`)[0];
+                popup_ff9e254bec73475d5cc0cd7990c1c80b.setContent(html_7539b797a7895ec061a9511accfee4cd);
+            
+        
+
+        marker_9930762593f0d6d63e0d9906712068c4.bindPopup(popup_ff9e254bec73475d5cc0cd7990c1c80b)
+        ;
+
+        
+    
+    
+            marker_9930762593f0d6d63e0d9906712068c4.bindTooltip(
+                `<div>
+                     Government Hospital Kolathur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9930762593f0d6d63e0d9906712068c4.setIcon(icon_31288d4cfc8cd3cb3c1a31b063104626);
+            
+    
+            var marker_9490e2ffb699b1457e437ac4b8c24a91 = L.marker(
+                [13.115, 80.243],
+                {
+}
+            ).addTo(feature_group_47d9a4c10dcf146bfaacb40589765b6f);
+        
+    
+            var icon_4f692528ce1fc80aabbc3ba219dbf9a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6a11d4f21c881f055371273a1ce328f = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_22728dfd665d4c9bfb62d49fa6554d1f = $(`<div id="html_22728dfd665d4c9bfb62d49fa6554d1f" style="width: 100.0%; height: 100.0%;">     <b>Government Hospital Perambur</b><br>     Type: Government<br>     Area: Perambur<br>     Beds: 190<br>     Doctors: 72<br>     Emergency: No<br>     Zone: 4     </div>`)[0];
+                popup_e6a11d4f21c881f055371273a1ce328f.setContent(html_22728dfd665d4c9bfb62d49fa6554d1f);
+            
+        
+
+        marker_9490e2ffb699b1457e437ac4b8c24a91.bindPopup(popup_e6a11d4f21c881f055371273a1ce328f)
+        ;
+
+        
+    
+    
+            marker_9490e2ffb699b1457e437ac4b8c24a91.bindTooltip(
+                `<div>
+                     Government Hospital Perambur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9490e2ffb699b1457e437ac4b8c24a91.setIcon(icon_4f692528ce1fc80aabbc3ba219dbf9a5);
+            
+    
+            feature_group_47d9a4c10dcf146bfaacb40589765b6f.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+            var feature_group_650054f059b322a10c6693a23d971b62 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_4b2465528afe61f70cbb473e9de9d2b4 = L.marker(
+                [13.0569, 80.252],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_5ee7a1f4ae693bd8ddfb4b6439348893 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_11fa2ab5f967c1a706d10d334a6ba3fd = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_faef4693d96db7f832cd1b7acc9cdb40 = $(`<div id="html_faef4693d96db7f832cd1b7acc9cdb40" style="width: 100.0%; height: 100.0%;">     <b>Apollo Hospitals Greams Road</b><br>     Type: Private<br>     Area: Greams Road<br>     Beds: 700<br>     Doctors: 350<br>     Emergency: Yes<br>     Zone: 1     </div>`)[0];
+                popup_11fa2ab5f967c1a706d10d334a6ba3fd.setContent(html_faef4693d96db7f832cd1b7acc9cdb40);
+            
+        
+
+        marker_4b2465528afe61f70cbb473e9de9d2b4.bindPopup(popup_11fa2ab5f967c1a706d10d334a6ba3fd)
+        ;
+
+        
+    
+    
+            marker_4b2465528afe61f70cbb473e9de9d2b4.bindTooltip(
+                `<div>
+                     Apollo Hospitals Greams Road
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4b2465528afe61f70cbb473e9de9d2b4.setIcon(icon_5ee7a1f4ae693bd8ddfb4b6439348893);
+            
+    
+            var marker_c34b578bab13cfcfacb1078250553815 = L.marker(
+                [13.0012, 80.2565],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_93fd4dc674a3e4e1c7b66e7c6d8c8d84 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_18f33d625721e55a76db28fa98bbce3c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_cfbe471af43524d3ffc020b456c13498 = $(`<div id="html_cfbe471af43524d3ffc020b456c13498" style="width: 100.0%; height: 100.0%;">     <b>Fortis Malar Hospital</b><br>     Type: Private<br>     Area: Adyar<br>     Beds: 180<br>     Doctors: 150<br>     Emergency: Yes<br>     Zone: 1     </div>`)[0];
+                popup_18f33d625721e55a76db28fa98bbce3c.setContent(html_cfbe471af43524d3ffc020b456c13498);
+            
+        
+
+        marker_c34b578bab13cfcfacb1078250553815.bindPopup(popup_18f33d625721e55a76db28fa98bbce3c)
+        ;
+
+        
+    
+    
+            marker_c34b578bab13cfcfacb1078250553815.bindTooltip(
+                `<div>
+                     Fortis Malar Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c34b578bab13cfcfacb1078250553815.setIcon(icon_93fd4dc674a3e4e1c7b66e7c6d8c8d84);
+            
+    
+            var marker_315a7919a0c6e4289e19f03707dd2da6 = L.marker(
+                [13.0156, 80.1837],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_fb6d44b588d496a31035fef530a0d1d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad566e51683527cf3e9698fc26de83df = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_ab6c8fde829c3f7c0deb94946df18a85 = $(`<div id="html_ab6c8fde829c3f7c0deb94946df18a85" style="width: 100.0%; height: 100.0%;">     <b>MIOT International</b><br>     Type: Private<br>     Area: Manapakkam<br>     Beds: 1000<br>     Doctors: 400<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_ad566e51683527cf3e9698fc26de83df.setContent(html_ab6c8fde829c3f7c0deb94946df18a85);
+            
+        
+
+        marker_315a7919a0c6e4289e19f03707dd2da6.bindPopup(popup_ad566e51683527cf3e9698fc26de83df)
+        ;
+
+        
+    
+    
+            marker_315a7919a0c6e4289e19f03707dd2da6.bindTooltip(
+                `<div>
+                     MIOT International
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_315a7919a0c6e4289e19f03707dd2da6.setIcon(icon_fb6d44b588d496a31035fef530a0d1d6);
+            
+    
+            var marker_a478aa4932cf03727f2ecad6eac84c5b = L.marker(
+                [12.9271, 80.2133],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_843954caa21abd0829a30a32b56a4779 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9b495c80dde97de6ebb9f6bd25d89009 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_8aa8788d456d385a3af9c5417310c2e1 = $(`<div id="html_8aa8788d456d385a3af9c5417310c2e1" style="width: 100.0%; height: 100.0%;">     <b>Gleneagles Global Hospital</b><br>     Type: Private<br>     Area: Perumbakkam<br>     Beds: 1000<br>     Doctors: 380<br>     Emergency: Yes<br>     Zone: 3     </div>`)[0];
+                popup_9b495c80dde97de6ebb9f6bd25d89009.setContent(html_8aa8788d456d385a3af9c5417310c2e1);
+            
+        
+
+        marker_a478aa4932cf03727f2ecad6eac84c5b.bindPopup(popup_9b495c80dde97de6ebb9f6bd25d89009)
+        ;
+
+        
+    
+    
+            marker_a478aa4932cf03727f2ecad6eac84c5b.bindTooltip(
+                `<div>
+                     Gleneagles Global Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a478aa4932cf03727f2ecad6eac84c5b.setIcon(icon_843954caa21abd0829a30a32b56a4779);
+            
+    
+            var marker_2d426790d083dfa26d4c31bc1ab16f63 = L.marker(
+                [13.0358, 80.1586],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_9e8db860e02cc7431a2b56ab087a149e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5c9c5e444e8aa5fe74be1d638df8648a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_37f63ca1fecafabb62dd3d53c0e7c724 = $(`<div id="html_37f63ca1fecafabb62dd3d53c0e7c724" style="width: 100.0%; height: 100.0%;">     <b>Sri Ramachandra Medical Centre</b><br>     Type: Private<br>     Area: Porur<br>     Beds: 700<br>     Doctors: 300<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_5c9c5e444e8aa5fe74be1d638df8648a.setContent(html_37f63ca1fecafabb62dd3d53c0e7c724);
+            
+        
+
+        marker_2d426790d083dfa26d4c31bc1ab16f63.bindPopup(popup_5c9c5e444e8aa5fe74be1d638df8648a)
+        ;
+
+        
+    
+    
+            marker_2d426790d083dfa26d4c31bc1ab16f63.bindTooltip(
+                `<div>
+                     Sri Ramachandra Medical Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2d426790d083dfa26d4c31bc1ab16f63.setIcon(icon_9e8db860e02cc7431a2b56ab087a149e);
+            
+    
+            var marker_cd8d44e0d1c7799d7c09f5c442a43140 = L.marker(
+                [13.0514, 80.2121],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_1702133bf41f4ce5270d0c658a455827 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_825412847f0aff77383ccf20199e05c1 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e3cf07dcd315bbc2d00a37de3e56af59 = $(`<div id="html_e3cf07dcd315bbc2d00a37de3e56af59" style="width: 100.0%; height: 100.0%;">     <b>Vijaya Hospital</b><br>     Type: Private<br>     Area: Vadapalani<br>     Beds: 350<br>     Doctors: 140<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_825412847f0aff77383ccf20199e05c1.setContent(html_e3cf07dcd315bbc2d00a37de3e56af59);
+            
+        
+
+        marker_cd8d44e0d1c7799d7c09f5c442a43140.bindPopup(popup_825412847f0aff77383ccf20199e05c1)
+        ;
+
+        
+    
+    
+            marker_cd8d44e0d1c7799d7c09f5c442a43140.bindTooltip(
+                `<div>
+                     Vijaya Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cd8d44e0d1c7799d7c09f5c442a43140.setIcon(icon_1702133bf41f4ce5270d0c658a455827);
+            
+    
+            var marker_43cb9d228a992d2c2290056e115a9a49 = L.marker(
+                [12.955, 80.241],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_01e99e58532bb6580abf9876c2445a29 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49c899231c86b477d5be729f6228015a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_05d4a2e93659ea1f3ae6a9d2a2fc80c7 = $(`<div id="html_05d4a2e93659ea1f3ae6a9d2a2fc80c7" style="width: 100.0%; height: 100.0%;">     <b>Apollo Hospitals OMR</b><br>     Type: Private<br>     Area: Perungudi<br>     Beds: 200<br>     Doctors: 100<br>     Emergency: Yes<br>     Zone: 3     </div>`)[0];
+                popup_49c899231c86b477d5be729f6228015a.setContent(html_05d4a2e93659ea1f3ae6a9d2a2fc80c7);
+            
+        
+
+        marker_43cb9d228a992d2c2290056e115a9a49.bindPopup(popup_49c899231c86b477d5be729f6228015a)
+        ;
+
+        
+    
+    
+            marker_43cb9d228a992d2c2290056e115a9a49.bindTooltip(
+                `<div>
+                     Apollo Hospitals OMR
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_43cb9d228a992d2c2290056e115a9a49.setIcon(icon_01e99e58532bb6580abf9876c2445a29);
+            
+    
+            var marker_6fde818cbc0504479e06270fa49a3b55 = L.marker(
+                [13.053, 80.209],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_6f99ba918e0e56e856d5a60fe770e714 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8abac11d66bf9a9c55dee76095f9584e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5eb4cdaf55193de6a262dc04f0e7e865 = $(`<div id="html_5eb4cdaf55193de6a262dc04f0e7e865" style="width: 100.0%; height: 100.0%;">     <b>Fortis Hospital Vadapalani</b><br>     Type: Private<br>     Area: Vadapalani<br>     Beds: 250<br>     Doctors: 110<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_8abac11d66bf9a9c55dee76095f9584e.setContent(html_5eb4cdaf55193de6a262dc04f0e7e865);
+            
+        
+
+        marker_6fde818cbc0504479e06270fa49a3b55.bindPopup(popup_8abac11d66bf9a9c55dee76095f9584e)
+        ;
+
+        
+    
+    
+            marker_6fde818cbc0504479e06270fa49a3b55.bindTooltip(
+                `<div>
+                     Fortis Hospital Vadapalani
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6fde818cbc0504479e06270fa49a3b55.setIcon(icon_6f99ba918e0e56e856d5a60fe770e714);
+            
+    
+            var marker_fa410f2b15bf349d3898fdeb3cbccb05 = L.marker(
+                [13.0358, 80.2529],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_2e2323e8d9f8a301f9af3e71a4868f29 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_458f43599c7b2a17517c429c89edc3fe = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9b52e5a9523950d164998490204ceb13 = $(`<div id="html_9b52e5a9523950d164998490204ceb13" style="width: 100.0%; height: 100.0%;">     <b>Kauvery Hospital Alwarpet</b><br>     Type: Private<br>     Area: Alwarpet<br>     Beds: 350<br>     Doctors: 160<br>     Emergency: Yes<br>     Zone: 1     </div>`)[0];
+                popup_458f43599c7b2a17517c429c89edc3fe.setContent(html_9b52e5a9523950d164998490204ceb13);
+            
+        
+
+        marker_fa410f2b15bf349d3898fdeb3cbccb05.bindPopup(popup_458f43599c7b2a17517c429c89edc3fe)
+        ;
+
+        
+    
+    
+            marker_fa410f2b15bf349d3898fdeb3cbccb05.bindTooltip(
+                `<div>
+                     Kauvery Hospital Alwarpet
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fa410f2b15bf349d3898fdeb3cbccb05.setIcon(icon_2e2323e8d9f8a301f9af3e71a4868f29);
+            
+    
+            var marker_6650cb96d39e7228591e796864c7d1dc = L.marker(
+                [13.0521, 80.21],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_9aa0ccbd6cbde20d4612eea7ec8369c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_19c568b2fcf0494b529d719d446f1e3f = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_14dca5722767da0706c6310447bf4353 = $(`<div id="html_14dca5722767da0706c6310447bf4353" style="width: 100.0%; height: 100.0%;">     <b>Kauvery Hospital Vadapalani</b><br>     Type: Private<br>     Area: Vadapalani<br>     Beds: 300<br>     Doctors: 130<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_19c568b2fcf0494b529d719d446f1e3f.setContent(html_14dca5722767da0706c6310447bf4353);
+            
+        
+
+        marker_6650cb96d39e7228591e796864c7d1dc.bindPopup(popup_19c568b2fcf0494b529d719d446f1e3f)
+        ;
+
+        
+    
+    
+            marker_6650cb96d39e7228591e796864c7d1dc.bindTooltip(
+                `<div>
+                     Kauvery Hospital Vadapalani
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6650cb96d39e7228591e796864c7d1dc.setIcon(icon_9aa0ccbd6cbde20d4612eea7ec8369c3);
+            
+    
+            var marker_e9c6d9b8b6b51a402c2d7fa6284b9952 = L.marker(
+                [13.085, 80.2101],
+                {
+}
+            ).addTo(feature_group_650054f059b322a10c6693a23d971b62);
+        
+    
+            var icon_4ef9b66e725ff732ac7cfe9fc4ad5084 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_45fe4a1138ea3e6fec8b3e7f474196c2 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d49c45cc997c5eab5ddcd711ab6feb2d = $(`<div id="html_d49c45cc997c5eab5ddcd711ab6feb2d" style="width: 100.0%; height: 100.0%;">     <b>Sundaram Medical Foundation</b><br>     Type: Private<br>     Area: Anna Nagar<br>     Beds: 200<br>     Doctors: 100<br>     Emergency: Yes<br>     Zone: 4     </div>`)[0];
+                popup_45fe4a1138ea3e6fec8b3e7f474196c2.setContent(html_d49c45cc997c5eab5ddcd711ab6feb2d);
+            
+        
+
+        marker_e9c6d9b8b6b51a402c2d7fa6284b9952.bindPopup(popup_45fe4a1138ea3e6fec8b3e7f474196c2)
+        ;
+
+        
+    
+    
+            marker_e9c6d9b8b6b51a402c2d7fa6284b9952.bindTooltip(
+                `<div>
+                     Sundaram Medical Foundation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e9c6d9b8b6b51a402c2d7fa6284b9952.setIcon(icon_4ef9b66e725ff732ac7cfe9fc4ad5084);
+            
+    
+            feature_group_650054f059b322a10c6693a23d971b62.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+            var feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_12ead1dfcfdc460b22eccfcdc04f3845 = L.marker(
+                [13.0316, 80.2212],
+                {
+}
+            ).addTo(feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8);
+        
+    
+            var icon_9df2c89c8adc45f5d36036f272288dae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0b489a61b604d82ef317b7ee4808a8d2 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b2de98bce188bd2c50364097dc16e9d9 = $(`<div id="html_b2de98bce188bd2c50364097dc16e9d9" style="width: 100.0%; height: 100.0%;">     <b>ESI Hospital Ashok Nagar</b><br>     Type: ESI<br>     Area: Ashok Nagar<br>     Beds: 300<br>     Doctors: 120<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_0b489a61b604d82ef317b7ee4808a8d2.setContent(html_b2de98bce188bd2c50364097dc16e9d9);
+            
+        
+
+        marker_12ead1dfcfdc460b22eccfcdc04f3845.bindPopup(popup_0b489a61b604d82ef317b7ee4808a8d2)
+        ;
+
+        
+    
+    
+            marker_12ead1dfcfdc460b22eccfcdc04f3845.bindTooltip(
+                `<div>
+                     ESI Hospital Ashok Nagar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_12ead1dfcfdc460b22eccfcdc04f3845.setIcon(icon_9df2c89c8adc45f5d36036f272288dae);
+            
+    
+            var marker_92ddf817e1eb33eb73fcaa0404c7f1e6 = L.marker(
+                [13.0418, 80.204],
+                {
+}
+            ).addTo(feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8);
+        
+    
+            var icon_5c43776d9df25c387eeaa95a8c55ac4d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f558fdcf3204c545615ce07c520ed1a5 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_bf652957ff2931f17fae7160590eadfc = $(`<div id="html_bf652957ff2931f17fae7160590eadfc" style="width: 100.0%; height: 100.0%;">     <b>ESI Hospital KK Nagar</b><br>     Type: ESI<br>     Area: KK Nagar<br>     Beds: 250<br>     Doctors: 100<br>     Emergency: Yes<br>     Zone: 2     </div>`)[0];
+                popup_f558fdcf3204c545615ce07c520ed1a5.setContent(html_bf652957ff2931f17fae7160590eadfc);
+            
+        
+
+        marker_92ddf817e1eb33eb73fcaa0404c7f1e6.bindPopup(popup_f558fdcf3204c545615ce07c520ed1a5)
+        ;
+
+        
+    
+    
+            marker_92ddf817e1eb33eb73fcaa0404c7f1e6.bindTooltip(
+                `<div>
+                     ESI Hospital KK Nagar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_92ddf817e1eb33eb73fcaa0404c7f1e6.setIcon(icon_5c43776d9df25c387eeaa95a8c55ac4d);
+            
+    
+            var marker_24ef78ea2d6b60b33b2c1a6ca862c1aa = L.marker(
+                [13.1043, 80.248],
+                {
+}
+            ).addTo(feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8);
+        
+    
+            var icon_ffc9739238487119f1852b7711c9f48d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_22accf4b3d6b7e8c00101953b4badd14 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5cf05906d5b4a30a51f0a3e70735faef = $(`<div id="html_5cf05906d5b4a30a51f0a3e70735faef" style="width: 100.0%; height: 100.0%;">     <b>ESI Hospital Ayanavaram</b><br>     Type: ESI<br>     Area: Ayanavaram<br>     Beds: 200<br>     Doctors: 80<br>     Emergency: Yes<br>     Zone: 4     </div>`)[0];
+                popup_22accf4b3d6b7e8c00101953b4badd14.setContent(html_5cf05906d5b4a30a51f0a3e70735faef);
+            
+        
+
+        marker_24ef78ea2d6b60b33b2c1a6ca862c1aa.bindPopup(popup_22accf4b3d6b7e8c00101953b4badd14)
+        ;
+
+        
+    
+    
+            marker_24ef78ea2d6b60b33b2c1a6ca862c1aa.bindTooltip(
+                `<div>
+                     ESI Hospital Ayanavaram
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_24ef78ea2d6b60b33b2c1a6ca862c1aa.setIcon(icon_ffc9739238487119f1852b7711c9f48d);
+            
+    
+            var marker_f7ab98d3fa8f13740a14b8298225913b = L.marker(
+                [13.0368, 80.2676],
+                {
+}
+            ).addTo(feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8);
+        
+    
+            var icon_67b145dc34b88cfdf7218268344b4826 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bc48b2a263479b1f5e9d2dae22f55871 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_75a2d36fcc26c2514c7d29cb11b46674 = $(`<div id="html_75a2d36fcc26c2514c7d29cb11b46674" style="width: 100.0%; height: 100.0%;">     <b>ESI Hospital Mylapore</b><br>     Type: ESI<br>     Area: Mylapore<br>     Beds: 150<br>     Doctors: 60<br>     Emergency: No<br>     Zone: 1     </div>`)[0];
+                popup_bc48b2a263479b1f5e9d2dae22f55871.setContent(html_75a2d36fcc26c2514c7d29cb11b46674);
+            
+        
+
+        marker_f7ab98d3fa8f13740a14b8298225913b.bindPopup(popup_bc48b2a263479b1f5e9d2dae22f55871)
+        ;
+
+        
+    
+    
+            marker_f7ab98d3fa8f13740a14b8298225913b.bindTooltip(
+                `<div>
+                     ESI Hospital Mylapore
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f7ab98d3fa8f13740a14b8298225913b.setIcon(icon_67b145dc34b88cfdf7218268344b4826);
+            
+    
+            var marker_e1f5f309591f3f6e152a61e2a94c79a6 = L.marker(
+                [13.12, 80.245],
+                {
+}
+            ).addTo(feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8);
+        
+    
+            var icon_1cd32bb91a0cd3e7088339c4bbe9cef9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_459c43506d5773625b8b92d9f1118f0e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c92798a2f3e0a4ddb34a5aadde29e9a4 = $(`<div id="html_c92798a2f3e0a4ddb34a5aadde29e9a4" style="width: 100.0%; height: 100.0%;">     <b>ESI Hospital Perambur</b><br>     Type: ESI<br>     Area: Perambur<br>     Beds: 175<br>     Doctors: 70<br>     Emergency: No<br>     Zone: 4     </div>`)[0];
+                popup_459c43506d5773625b8b92d9f1118f0e.setContent(html_c92798a2f3e0a4ddb34a5aadde29e9a4);
+            
+        
+
+        marker_e1f5f309591f3f6e152a61e2a94c79a6.bindPopup(popup_459c43506d5773625b8b92d9f1118f0e)
+        ;
+
+        
+    
+    
+            marker_e1f5f309591f3f6e152a61e2a94c79a6.bindTooltip(
+                `<div>
+                     ESI Hospital Perambur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e1f5f309591f3f6e152a61e2a94c79a6.setIcon(icon_1cd32bb91a0cd3e7088339c4bbe9cef9);
+            
+    
+            feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+            var feature_group_62518014ee31b4bbcbe1a5f780bc7942 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_2fb38c887a383ad09d0b1f11086467ed = L.circleMarker(
+                [12.93472, 80.14014],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(feature_group_62518014ee31b4bbcbe1a5f780bc7942);
+        
+    
+        var popup_8e574e53df143ff16fc5407438ea4900 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4736439fd1e9fdc3db6378aa94ab5939 = $(`<div id="html_4736439fd1e9fdc3db6378aa94ab5939" style="width: 100.0%; height: 100.0%;">Zone 0 | Hospitals: 5 | ⚠️ Underserved</div>`)[0];
+                popup_8e574e53df143ff16fc5407438ea4900.setContent(html_4736439fd1e9fdc3db6378aa94ab5939);
+            
+        
+
+        circle_marker_2fb38c887a383ad09d0b1f11086467ed.bindPopup(popup_8e574e53df143ff16fc5407438ea4900)
+        ;
+
+        
+    
+    
+            circle_marker_2fb38c887a383ad09d0b1f11086467ed.bindTooltip(
+                `<div>
+                     Zone 0: 5 hospitals
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_212ca71ad0c5aa39d3cd4d84f180563d = L.circleMarker(
+                [13.04363, 80.25923],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(feature_group_62518014ee31b4bbcbe1a5f780bc7942);
+        
+    
+        var popup_d5a9333cc69261b33aef02fc154a8c30 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8547ceaeb7db10642742c3d0bb532131 = $(`<div id="html_8547ceaeb7db10642742c3d0bb532131" style="width: 100.0%; height: 100.0%;">Zone 1 | Hospitals: 10 | ✅ Adequate</div>`)[0];
+                popup_d5a9333cc69261b33aef02fc154a8c30.setContent(html_8547ceaeb7db10642742c3d0bb532131);
+            
+        
+
+        circle_marker_212ca71ad0c5aa39d3cd4d84f180563d.bindPopup(popup_d5a9333cc69261b33aef02fc154a8c30)
+        ;
+
+        
+    
+    
+            circle_marker_212ca71ad0c5aa39d3cd4d84f180563d.bindTooltip(
+                `<div>
+                     Zone 1: 10 hospitals
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_047d1f8afd93ff5110380c844c3389b0 = L.circleMarker(
+                [13.035066666666667, 80.18744166666667],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(feature_group_62518014ee31b4bbcbe1a5f780bc7942);
+        
+    
+        var popup_510bf56306ea07aa2a48aa28babda996 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bb9443560b265068c97369749eadcde1 = $(`<div id="html_bb9443560b265068c97369749eadcde1" style="width: 100.0%; height: 100.0%;">Zone 2 | Hospitals: 12 | ✅ Adequate</div>`)[0];
+                popup_510bf56306ea07aa2a48aa28babda996.setContent(html_bb9443560b265068c97369749eadcde1);
+            
+        
+
+        circle_marker_047d1f8afd93ff5110380c844c3389b0.bindPopup(popup_510bf56306ea07aa2a48aa28babda996)
+        ;
+
+        
+    
+    
+            circle_marker_047d1f8afd93ff5110380c844c3389b0.bindTooltip(
+                `<div>
+                     Zone 2: 12 hospitals
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a67bd50090c8dedc8dff30d3ad7b4f6c = L.circleMarker(
+                [12.944375, 80.2159625],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(feature_group_62518014ee31b4bbcbe1a5f780bc7942);
+        
+    
+        var popup_30ee9d1c0a56b157c9f38fcf94cd8688 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4bbe3bdd92841bee064b83731daa38ec = $(`<div id="html_4bbe3bdd92841bee064b83731daa38ec" style="width: 100.0%; height: 100.0%;">Zone 3 | Hospitals: 8 | ✅ Adequate</div>`)[0];
+                popup_30ee9d1c0a56b157c9f38fcf94cd8688.setContent(html_4bbe3bdd92841bee064b83731daa38ec);
+            
+        
+
+        circle_marker_a67bd50090c8dedc8dff30d3ad7b4f6c.bindPopup(popup_30ee9d1c0a56b157c9f38fcf94cd8688)
+        ;
+
+        
+    
+    
+            circle_marker_a67bd50090c8dedc8dff30d3ad7b4f6c.bindTooltip(
+                `<div>
+                     Zone 3: 8 hospitals
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_550ff89ef3fad9c42a6461997d2e1469 = L.circleMarker(
+                [13.110027272727272, 80.22270909090909],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "cadetblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(feature_group_62518014ee31b4bbcbe1a5f780bc7942);
+        
+    
+        var popup_1e811dea32d0ec91c1696f159959b6d7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f495bc8d447e06ce34970c72740c9d37 = $(`<div id="html_f495bc8d447e06ce34970c72740c9d37" style="width: 100.0%; height: 100.0%;">Zone 4 | Hospitals: 11 | ✅ Adequate</div>`)[0];
+                popup_1e811dea32d0ec91c1696f159959b6d7.setContent(html_f495bc8d447e06ce34970c72740c9d37);
+            
+        
+
+        circle_marker_550ff89ef3fad9c42a6461997d2e1469.bindPopup(popup_1e811dea32d0ec91c1696f159959b6d7)
+        ;
+
+        
+    
+    
+            circle_marker_550ff89ef3fad9c42a6461997d2e1469.bindTooltip(
+                `<div>
+                     Zone 4: 11 hospitals
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_75941c57c88501dc46c805fd27002f79 = L.circleMarker(
+                [13.14065, 80.287925],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(feature_group_62518014ee31b4bbcbe1a5f780bc7942);
+        
+    
+        var popup_627ac5ce455af8094494c47d6f32a37a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_35cb1aef0daf54472b4c64a82f025094 = $(`<div id="html_35cb1aef0daf54472b4c64a82f025094" style="width: 100.0%; height: 100.0%;">Zone 5 | Hospitals: 4 | ⚠️ Underserved</div>`)[0];
+                popup_627ac5ce455af8094494c47d6f32a37a.setContent(html_35cb1aef0daf54472b4c64a82f025094);
+            
+        
+
+        circle_marker_75941c57c88501dc46c805fd27002f79.bindPopup(popup_627ac5ce455af8094494c47d6f32a37a)
+        ;
+
+        
+    
+    
+            circle_marker_75941c57c88501dc46c805fd27002f79.bindTooltip(
+                `<div>
+                     Zone 5: 4 hospitals
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_62518014ee31b4bbcbe1a5f780bc7942.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+            var layer_control_2b293a4b02e7ad835ad640f4b8829c3d_layers = {
+                base_layers : {
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" : tile_layer_934e7e686a3a97defbf5905dfa8b3ebd,
+                },
+                overlays :  {
+                    "Government Hospitals" : feature_group_47d9a4c10dcf146bfaacb40589765b6f,
+                    "Private Hospitals" : feature_group_650054f059b322a10c6693a23d971b62,
+                    "ESI Hospitals" : feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8,
+                    "Zone Centers (Clusters)" : feature_group_62518014ee31b4bbcbe1a5f780bc7942,
+                },
+            };
+            let layer_control_2b293a4b02e7ad835ad640f4b8829c3d = L.control.layers(
+                layer_control_2b293a4b02e7ad835ad640f4b8829c3d_layers.base_layers,
+                layer_control_2b293a4b02e7ad835ad640f4b8829c3d_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+
+        
+    
+            tile_layer_934e7e686a3a97defbf5905dfa8b3ebd.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+                marker_9908154db763af125062f39083fd54b1.setIcon(icon_2a52d250a974320f60628940584d120d);
+            
+    
+                marker_e878f5d595ae63b65c72b0fee938fe9a.setIcon(icon_0d271fc11b21bed3f7fe80cd74b893e1);
+            
+    
+                marker_68409842f711a56a129cc5d0654d7e35.setIcon(icon_75223e6c6834302391c7fd7ac80ca2b5);
+            
+    
+                marker_e8c3554ad0840c242db301312be905e9.setIcon(icon_91c79d470503a91670cfb0d1368496e6);
+            
+    
+                marker_4cb0430780d11acc16daf3812aaaca14.setIcon(icon_844968b30dba43c499e6d7d839a4185e);
+            
+    
+                marker_b6c9b37803e2b0e0ce036482a7a1a9c3.setIcon(icon_7b05a7e64db8d0374da2fe565dc49588);
+            
+    
+                marker_9fd5eef7834598e15340aa52bd44e420.setIcon(icon_3748df7eba091670834d7738b08995ef);
+            
+    
+                marker_49b6e22e8153bbb0db63a6f3aa62d2db.setIcon(icon_73acdecd0d4d587b8bc53f891d8a701c);
+            
+    
+                marker_01c1e26c94016ada4de90bf5bf29f99f.setIcon(icon_b732b618f154656acbf14974148a67c2);
+            
+    
+                marker_9df55ca0972b57dcbf7e5688a5554dad.setIcon(icon_6774cf7582d673f9c2887308835b1a80);
+            
+    
+                marker_b6f6036bb2d9a8e345fb0a7a939fbd57.setIcon(icon_afcbc4557373aad09b21bfe204b5b84a);
+            
+    
+                marker_ee82bdedad420f23231d2915f96ca395.setIcon(icon_ef29a91f8f6b319910e049a935fa62d8);
+            
+    
+                marker_f845d68aece66d6277a3dd91a4cefa5e.setIcon(icon_c456f2ef139bec8693ad5b868c0322bc);
+            
+    
+                marker_a6366b0673f2982b99bf95533d719845.setIcon(icon_dbfcf2afbad9b6c60984df85fc0ee87a);
+            
+    
+                marker_11f22d769f52ead1aa2667b913275c94.setIcon(icon_fa9ae0ca952d74d8584780b44295c798);
+            
+    
+                marker_0d0f6fa04897c79be84595d49c758417.setIcon(icon_aa450fef6f341189276190b5deb65773);
+            
+    
+                marker_84628a8bfced30015bdb893ab5569120.setIcon(icon_f6923c8bab6e3fb5050c95a2e0e5f213);
+            
+    
+                marker_76493a165b06ae60620a86bcb29b1e66.setIcon(icon_b417066c86def34d5f3d7064e8dc014a);
+            
+    
+                marker_8c6a113a6dea954a89a8be12d7360d4f.setIcon(icon_4b73ab52b445b3af66ad795e09ff4607);
+            
+    
+                marker_85369d42144481bd8a2c61d68d63dd96.setIcon(icon_f12743b749f85e15169b5fb5b52e3c73);
+            
+    
+                marker_077acf4e6fae9bde03ec364f55a8bfe1.setIcon(icon_90287f1d0b6fff7a1120e8661cfe67da);
+            
+    
+                marker_d7441614349cd01377760a6c64b56a18.setIcon(icon_90a945c2a385a234e67bcab09db9388c);
+            
+    
+                marker_d0447be72344ad903627d5c190a8c91a.setIcon(icon_9ac602b816d1115ab90f1f4c7fbc1bf6);
+            
+    
+                marker_a61ef1442943be882d5ca664eec851b1.setIcon(icon_f17b5166452c0e634c06c6fc4021db9e);
+            
+    
+                marker_eb6605d96c50eeefc8bc62a286a1954e.setIcon(icon_a2876bef7514babb7931db38a8ca0ced);
+            
+    
+                marker_31cb4407fd88b012fa9e590a8218a0c4.setIcon(icon_14a920a60d791873ea7eb46e89c7c8a6);
+            
+    
+                marker_4a16f43eb1c8b1fe5ed9a87dbf0de7e8.setIcon(icon_c88db3cdbc5c14c640db4ebf3e60564d);
+            
+    
+                marker_fc6b0353714eaf364dcb45263df17ab3.setIcon(icon_f6cf222329196b7a499f9d218c9d2f8e);
+            
+    
+                marker_f5022f108409f396a1d852e0dc98b156.setIcon(icon_2edf67e0b99863b84fe76019cc300d62);
+            
+    
+                marker_a7bb490ad674162ebfeb02af75e7cfc8.setIcon(icon_bb454824de9b533f2c0c2e7ddd47a818);
+            
+    
+                marker_9676bdb1a436d8c9ca2db4e332b9a761.setIcon(icon_9bc43185c9e143001961aa0fd19dc18b);
+            
+    
+                marker_dc5e5163007543b3df5e72cae1d3f03a.setIcon(icon_7b2961445214fab0e77b2dcb99ac0aa0);
+            
+    
+                marker_9930762593f0d6d63e0d9906712068c4.setIcon(icon_31288d4cfc8cd3cb3c1a31b063104626);
+            
+    
+                marker_9490e2ffb699b1457e437ac4b8c24a91.setIcon(icon_4f692528ce1fc80aabbc3ba219dbf9a5);
+            
+    
+            feature_group_47d9a4c10dcf146bfaacb40589765b6f.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+                marker_4b2465528afe61f70cbb473e9de9d2b4.setIcon(icon_5ee7a1f4ae693bd8ddfb4b6439348893);
+            
+    
+                marker_c34b578bab13cfcfacb1078250553815.setIcon(icon_93fd4dc674a3e4e1c7b66e7c6d8c8d84);
+            
+    
+                marker_315a7919a0c6e4289e19f03707dd2da6.setIcon(icon_fb6d44b588d496a31035fef530a0d1d6);
+            
+    
+                marker_a478aa4932cf03727f2ecad6eac84c5b.setIcon(icon_843954caa21abd0829a30a32b56a4779);
+            
+    
+                marker_2d426790d083dfa26d4c31bc1ab16f63.setIcon(icon_9e8db860e02cc7431a2b56ab087a149e);
+            
+    
+                marker_cd8d44e0d1c7799d7c09f5c442a43140.setIcon(icon_1702133bf41f4ce5270d0c658a455827);
+            
+    
+                marker_43cb9d228a992d2c2290056e115a9a49.setIcon(icon_01e99e58532bb6580abf9876c2445a29);
+            
+    
+                marker_6fde818cbc0504479e06270fa49a3b55.setIcon(icon_6f99ba918e0e56e856d5a60fe770e714);
+            
+    
+                marker_fa410f2b15bf349d3898fdeb3cbccb05.setIcon(icon_2e2323e8d9f8a301f9af3e71a4868f29);
+            
+    
+                marker_6650cb96d39e7228591e796864c7d1dc.setIcon(icon_9aa0ccbd6cbde20d4612eea7ec8369c3);
+            
+    
+                marker_e9c6d9b8b6b51a402c2d7fa6284b9952.setIcon(icon_4ef9b66e725ff732ac7cfe9fc4ad5084);
+            
+    
+            feature_group_650054f059b322a10c6693a23d971b62.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+                marker_12ead1dfcfdc460b22eccfcdc04f3845.setIcon(icon_9df2c89c8adc45f5d36036f272288dae);
+            
+    
+                marker_92ddf817e1eb33eb73fcaa0404c7f1e6.setIcon(icon_5c43776d9df25c387eeaa95a8c55ac4d);
+            
+    
+                marker_24ef78ea2d6b60b33b2c1a6ca862c1aa.setIcon(icon_ffc9739238487119f1852b7711c9f48d);
+            
+    
+                marker_f7ab98d3fa8f13740a14b8298225913b.setIcon(icon_67b145dc34b88cfdf7218268344b4826);
+            
+    
+                marker_e1f5f309591f3f6e152a61e2a94c79a6.setIcon(icon_1cd32bb91a0cd3e7088339c4bbe9cef9);
+            
+    
+            feature_group_7b4eec4fbe5b26e0af1aebc6ebd1dda8.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+    
+            feature_group_62518014ee31b4bbcbe1a5f780bc7942.addTo(map_5eeeeb23a79c0b8966a95b17f5b23a82);
+        
+</script>
+</html>
